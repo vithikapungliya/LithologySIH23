@@ -1,0 +1,91 @@
+{%  extends 'base.html' %}
+{% block body %}
+
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script  src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+
+    <title>LegalAI</title>
+  </head>
+    <style>
+     .heading{
+   padding-top: 30px;
+   font-size: 35px;
+   color:#D0B566;
+    text-align: center;
+    font-weight: bold;
+
+     }
+    </style>
+
+  <body>
+<div class="heading">Chemical Composition of Drill Core for Each City</div>
+
+            <div class="column" style="padding-top: 4.5%; margin-left: 0;">
+              <canvas id="myChart" width="340" height="150"></canvas>
+            </div>
+      <script>
+    // JavaScript code for setting up the stacked bar graph
+    document.addEventListener('DOMContentLoaded', function () {
+      // Sample data for the chart
+      var dat=JSON.parse("{{overall_composition|escapejs}}");
+      console.log({{ overall_composition|safe }})
+      const data = {
+        labels: ['Limestone', 'Sandstone', 'Shale'],
+        datasets: [
+
+          {
+            label: 'Percentage Composition',
+            backgroundColor: '#D4AF37',
+              data : dat,
+            stacked: true, // Set the dataset as stacked
+              barThickness:60,
+          },
+
+        ],
+      };
+
+      // Configuration options for the chart
+      const options = {
+        indexAxis: 'x', // Display bars vertically (stacked bar chart)
+        scales: {
+          x: {
+            stacked: true, // Enable stacked mode for x-axis
+          },
+          y: {
+            stacked: true, // Enable stacked mode for y-axis
+          },
+        },
+                  plugins: {
+             legend: {
+            display: true,
+            position: 'bottom', // Display the dataset labels at the bottom
+          },
+        },
+
+      };
+
+
+
+      // Get the canvas element and initialize the multi-line horizontal bar chart
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const myMultiLineBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: options,
+      });
+    });
+
+
+</script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
+  </body>
+{% endblock %}

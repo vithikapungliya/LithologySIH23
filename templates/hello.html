@@ -1,0 +1,9 @@
+<form method="get" action="{% url 'dashboard' %}">
+    {{ order_filter.form.as_p }}
+    <button type="submit">Filter</button>
+</form>
+
+{% for key,values in overall_compostion.items %}
+    <!-- Render your filtered items here -->
+    {{key}}:{{values}}
+{% endfor %}

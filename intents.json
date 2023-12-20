@@ -1,0 +1,91 @@
+{
+    "intents": [
+      {
+        "tag": "Minsitry of Mines",
+        "patterns":[
+            "What are the responsibilities of the Ministry of Mines in India?",
+            "What is the mandate of the Ministry of Mines in India?",
+            "Could you outline the functions of the Ministry of Mines in India?",
+            "What does the Ministry of Mines in India oversee?",
+            "What is the role of the Ministry of Mines in India?",
+            "What are the specific duties assigned to the Ministry of Mines in India?",
+            "Could you provide information on the tasks undertaken by the Ministry of Mines in India?"
+        ],
+        "responses": [
+          "The Ministry of Mines in India plays a crucial role in formulating and implementing policies for the sustainable development of the country's mining sector. It regulates mining activities, focusing on responsible extraction and ensuring compliance with relevant laws.",
+          "The Ministry of Mines is actively involved in mineral exploration and surveying to identify potential resources and promotes their conservation and sustainable development. Additionally, it encourages research and development in mining technologies, aiming for increased efficiency and environmental sustainability.",
+          "The Ministry plays a pivotal role in managing the country's mineral wealth, which includes diverse resources such as coal, iron ore, bauxite, copper, and various other metallic and non-metallic minerals. The ministry is responsible for granting mining licenses, implementing environmental and safety standards, and fostering innovation in mineral exploration and processing."
+        ]
+      },
+      {
+        "tag": "Greeting",
+        "patterns": [
+          "Hi",
+          "Hey",
+          "Is anyone there?",
+          "Hello",
+          "Greetings",
+          "Good morning",
+          "Hola!",
+          " Good Evening",
+          "Hello Bot",
+          "How you doing?",
+          "What’s up",
+          "Good Afternoon"
+        ],
+        "responses": [
+          "Hello",
+          "Hi",
+          "Hi there",
+          " Hey, how can I help you?"
+        ]
+      },
+      {
+        "tag": "Goodbye_Thanks",
+        "patterns": [
+          "Bye",
+          "See you later",
+          "Goodbye",
+          "Goodnight",
+          "Thank You",
+          "Thanks",
+          "Thanks",
+          "Thank you",
+          "That's helpful",
+          "Thanks for the help",
+          "Thank you for helping out",
+          "Your help is much appreciated",
+          " You are so kind",
+          "You are very helpful",
+          "Aren’t you a peach",
+          "Wonderful Bot",
+          "Gracias",
+          "Appreciated your help"
+        ],
+        "responses": [
+          "See you later",
+          "Have a nice day",
+          "Bye! Come back again",
+          "Happy to help!",
+          "Any time!",
+          "My pleasure",
+          "You're most welcome!"
+        ]
+      },
+      {
+        "tag": "Use of Application",
+        "patterns": [
+          "What are the primary features of your website?",
+          "How can I use your website?",
+          "Help me navigate across the wesbite?",
+          "Give me an overview of your sytem?",
+          "Explain me the pipeline in your website?"
+
+        ],
+        "responses": [
+          "There are 4 main utilities in the website. The first one is an Artifical Intelligence classification pipeline which is used to classify lithology of minerals. Second utility is an Object Detection pipeline to detect geological discontinuties. Third utility is to generate a report which consists of all essential data analysed. Fourth utility is a dashboard which is used to visualise the chemical compostion of minerals for every city."
+        ]
+      }
+     
+    ]
+  }

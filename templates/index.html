@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Form</title>
+</head>
+<body>
+    <form action="/predictComposition" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name">
+
+        <br><br>
+
+        <label for="location">Enter your location:</label>
+        <input type="text" id="location" name="location">
+
+        <br><br>
+
+        <label for="image">Choose an image:</label>
+        <input type="file" id="image" name="filePath" accept="image/*">
+    
+        <br><br>
+
+        <input type="submit" value="Upload">
+        {{image_path}}
+        {{compositions}}
+    </form>
+    <h1>Image Analysis Results:</h1>
+
+{% for image_info in composition_with_path %}
+    {% for image_path, percentages in image_info.items %}
+        <h2>Image: {{ image_path }}</h2>
+        <img src="{% static image_path %}" alt="Image">
+        <ul>
+            <li>Limestone Percentage: {{ percentages.limestone_percentage }}%</li>
+            <li>Sandstone Percentage: {{ percentages.sandstone_percentage }}%</li>
+            <li>Shale Percentage: {{ percentages.shale_percentage }}%</li>
+            <li>Unknown Percentage: {{ percentages.unknown_percentage }}%</li>
+        </ul>
+    {% endfor %}
+{% endfor %}
+<h1>discontinuity Analysis Results:</h1>
+<img src="{% static discontinuities_image_path %}" alt="Image">
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/path/to/jquery.min.js"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+
+}
+
+
+        .sidebar {
+          background: #f3f4f5;
+          position: fixed;
+          left: 0;
+          width: 200px;
+          height: 100%;
+          transition: 0.5s;
+          transition-property: left;
+        }
+        .sidebar .heading{
+
+          margin-top: 20px;
+          color: #b28d35;
+          font-weight: 900;
+        }
+        .sidebar .heading .title{
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+         .quick{
+            margin-left: 20px;
+            padding-top: 25px;
+            font-weight: bold;
+        }
+        .shop{
+            margin-left: 15px;
+            padding-top: 25px;
+            padding-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .sidebar h4 {
+          color: #0c0c0c;
+          margin-top: 0;
+
+
+        }
+
+        .sidebar a {
+          color: #0c0c0c;
+          display: block;
+          width: 100%;
+          line-height: 50px;
+          text-decoration: none;
+          padding-left: 70px;
+          box-sizing: border-box;
+          transition: 0.5s;
+
+
+        }
+
+        .sidebar a:hover {
+          background: #b28d35;
+          color: white;
+          border-radius: 20px;
+        }
+
+        .sidebar i {
+          padding-right: 10px;
+        }
+
+        label #sidebar_btn {
+          z-index: 1;
+          color: #0c0c0c;
+          position: fixed;
+          cursor: pointer;
+          left: 300px;
+          font-size: 20px;
+          margin: 5px 0;
+          transition: 0.5s;
+          transition-property: color;
+        }
+
+        label #sidebar_btn:hover {
+          color: #6505f6;
+        }
+
+        #check:checked~.sidebar {
+          left: -190px;
+        }
+
+        #check:checked~.sidebar a span {
+          display: none;
+        }
+
+        #check:checked~.sidebar a {
+          font-size: 20px;
+          margin-left: 170px;
+          width: 80px;
+        }
+
+
+
+        #check:checked~.content {
+          margin-left: 60px;
+        }
+
+        #check {
+          display: none;
+        }
+
+
+
+
+
+
+        #check:checked~.content {
+          margin-left: 60px;
+        }
+
+        #check {
+          display: none;
+        }
+
+
+
+
+    .contain {
+      position: relative;
+      margin-left: 20px;
+        padding-bottom:10px;
+
+      overflow: hidden;
+      width: 160px;
+    }
+    .hidden {
+      display: none;
+    }
+    .entry {
+      height: 25px;
+      position: absolute;
+      width: 150px;
+    }
+    .entry:nth-child(2) {
+      left: 8px;
+      top: 8px;
+    }
+    .entry:nth-child(4) {
+      left: 8px;
+      top: 40px;
+    }
+    .entry:nth-child(6) {
+      left: 8px;
+      top: 72px;
+    }
+    .entry:nth-child(8) {
+      left: 8px;
+      top: 102px;
+    }
+    input:focus, textarea:focus, select:focus{
+        outline: none;}
+    .circle {
+      border: 2px solid #545556;
+      border-radius: 50%;
+      cursor: pointer;
+      height: 15px;
+      position: absolute;
+      transition: border-color 300ms;
+      width: 15px;
+    }
+    .entry-label {
+      cursor: pointer;
+      margin-top: -5px;
+      padding-left: 30px;
+      user-select: none;
+      -moz-user-select: none;
+    }
+    .overlay {
+
+      mask: url(#holes);
+      -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAACMCAYAAAAOc+uVAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAItSURBVHic7ZnNjhJBFIVPA0txr0Iyw+tIdOXWaDRufZWZeYbZuMKOUV9Gg+HHGN/BHBcNcSBT1KVOEVycb0mq635UVd9U5zQkif+Y3rkFclhQxYIqFlQZiM8vALQAPgP4AWC1+X0E4ALAFMBzAOPiCixjRfIdyX5g/h7JFyTnJYVKBGckHxQsxJBke2rBK5LF55bdal6fSnCmyO1JhlcyKrhkwbYekBySXNcUfF1L7o7k20jhhsxetxYAJk3T/Kks2EfXmkaHxkXO1MfacgCwmbPNjYsIftV1knzJDYgIfqsgkuJ7bkBE8FcFkRTr3IBzXxay9SOCjyuIFM8dEZxUECmeOyL4tIJIimluQKRRLwFcnqBRDwDMUaFRjwG8quC0zxtk5ACEL6wrksNaZiQfkvwZKRxtM08AfGDgBh2Q6wG4BfAo+sAxXB/xp+6VI3lzTMGSK3/Lgu1mt62fji1W+tH0m+R7dm9iZNVeMnjm9om0mUOs8O+zc47dz84Juh76DJG3NYEqeHLOfVnIYkEVC6pYUMWCKhZUsaCKBVUsqGJBFQuqWFDFgipO3OnEfRcn7qWCTtxTOHFP4cS9Ek7cVZy4qzhxL4ZO3AXoxF2QoxP3DifuW5y4q1hQxYIqFlSxoIoFVSyoYkEVC6pYUMWCKhZUsaCKE3c6cd/FiXupoBP3FE7cUzhxr4QTdxUn7ipO3IuhE3cBOnEX5OjEvcOJ+xYn7ioWVLGgigVV/gKEL4RSyM8Z8wAAAABJRU5ErkJggg==);
+      height: 140px;
+      pointer-events: none;
+      transition: background 300ms;
+      width: 40px;
+    }
+    .highlight {
+      background: #b28d35;
+      border-radius: 50%;
+      height: 8px;
+      left: 12.7px;
+      pointer-events: none;
+      position: absolute;
+      top: 12.2px;
+      transition: transform 400ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+      transform: translateY(-50px);
+      width: 8px;
+    }
+    .hidden:nth-child(1):checked ~ .highlight {
+      transform: translateY(0);
+    }
+    .hidden:nth-child(3):checked ~ .highlight {
+      transform: translateY(32px);
+    }
+    .hidden:nth-child(5):checked ~ .highlight {
+      transform: translateY(64px);
+    }
+    .hidden:nth-child(7):checked ~ .highlight {
+      transform: translateY(94px);
+    }
+    .hidden:nth-child(1):checked + .entry .circle {
+      border-color: #b28d35;
+    }
+    .hidden:nth-child(3):checked + .entry .circle {
+      border-color: #b28d35;
+    }
+    .hidden:nth-child(5):checked + .entry .circle {
+      border-color: #b28d35;
+    }
+    .hidden:nth-child(7):checked + .entry .circle {
+      border-color: #b28d35;
+    }
+    .check:checked ~ .containerOuter .overlay {
+      background: #b28d35;
+    }
+    .scroll-div{
+      background:fixed;
+      height:300px;
+      overflow:hidden;
+      overflow-y: scroll;
+    }
+
+    .scroll-object{
+      color:#b28d35;
+      font-family: cursive;
+      font-size: 15px;
+
+    }
+    .scroll-bg{
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    /* shop */
+    select{
+      background-color: white;
+      height: 30px;
+
+    }
+  .sub-shop{
+    width: 100%;
+
+  }
+
+
+  /* calender */
+
+    input{
+      height: 30px;
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 18px;
+      box-shadow: white;
+      border-color: white;
+    }
+
+
+    .container label{
+      padding-bottom: 2px;
+    }
+
+
+    /* button */
+    .btn{
+      background-color: #b28d35;
+      width: 40%;
+      color: white;
+      margin-left: 10px;
+      margin-top: 30px;
+    }
+
+</style>
+</head>
+<body>
+
+  <div class="sidebar">
+
+    <div class="heading" style="padding-top: 100px;"><h3 class="title">Dashboard</h3></div>
+    <div class="quick" style="padding-bottom: 5px">Quick Access</div>
+    <div class="containerOuter">
+      <form method="GET" action="/dashboard">
+      <div class="contain">
+        <input type="radio" value="1 Week" class="hidden" id="input1" name="inputs">
+        <label class="entry" for="input1"><div class="circle"></div><div class="entry-label">1 Week</div></label>
+        <input type="radio" value="1 Month" class="hidden" id="input2" name="inputs">
+        <label class="entry" for="input2"><div class="circle"></div><div class="entry-label">1 Month</div></label>
+        <input type="radio" value="6 Months" class="hidden" id="input3" name="inputs">
+        <label class="entry" for="input3"><div class="circle"></div><div class="entry-label">6 Months</div></label>
+        <input type="radio" value="1 Year" class="hidden" id="input4" name="inputs">
+        <label class="entry" for="input4"><div class="circle"></div><div class="entry-label">1 Year</div></label>
+        <div class="highlight"></div>
+        <div class="overlay"></div>
+      </div>
+
+
+      <div for="location" class="shop">Select a City</div>
+<div class="scroll-bg" style="outline: none; padding-left: 10px; padding-right: 10px;">
+    <select id="cityDropdown" name="location" class="shop-main" style="width: 100%;">
+        <option disabled selected hidden><p style="padding-left: 10px">&nbsp;&nbsp;Select a City</p></option>
+        {% for location in locations %}
+            <option value="{{ location }}"{% if request.GET.location == location %} selected {% endif %}>{{ location }}</option>
+        {% endfor %}
+    </select>
+</div>
+<button type="submit" class="btn" value="Filter" style="background-color: #b28d35; color: white; width: 40%;">Submit</button>
+<button type="reset" class="btn">Reset</button>
+          </form>
+      </div>
+
+  </div>
+
+
+  <div class="content">
+    
+    {% block body %} {% endblock %}
+  </div>
+
+  <script>
+   $(document).ready(function() {
+        var originalValue = $("#cityDropdown").val();
+
+        $("#cityDropdown").on("change", function() {
+            var selectedValue = $(this).val();
+            if (selectedValue) {
+                $(this).attr("data-selected", selectedValue);
+            }
+        });
+
+        $("#cityDropdown").on("keydown", function(event) {
+            if (event.keyCode === 13) {  // Enter key
+                $(this).val(originalValue).removeAttr("data-selected");
+                event.preventDefault();
+            }
+        });
+
+        $("form").on("submit", function() {
+            var selectedCity = $("#cityDropdown").val();
+            if (selectedCity) {
+                $("#cityDropdown").val(selectedCity);
+            }
+        });
+    });
+</script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+</body>
+</html>

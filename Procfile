@@ -1,0 +1,1 @@
+web: gunicorn Lithology.wsgi --log-file -

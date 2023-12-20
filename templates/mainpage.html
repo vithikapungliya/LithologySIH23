@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML5</title>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      background-image: url('static/img_3.png'); /* Add your background image URL here */
+      flex-direction: column;
+      align-items: center;
+      background-size: cover;
+      background-repeat: no-repeat; 
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 20px; /* Adjust the margin as needed */
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+      width: 790px;
+      height: 1000px;
+      background-color: #ffffff;
+      padding: 10px 30px 40px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .drop_box {
+      margin: 10px 0;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border: 3px dotted #a3a3a3;
+      border-radius: 5px;
+    }
+
+    .drop_box h4 {
+      font-size: 16px;
+      font-weight: 400;
+      color: #2e2e2e;
+    }
+
+    .drop_box p {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: #a3a3a3;
+    }
+
+    .btn {
+      text-decoration: none;
+      background-color: #005af0;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: #005af0;
+      padding: 10px 20px;
+      border: none;
+      outline: 1px solid #010101;
+    }
+
+      .btn-1 {
+      text-decoration: none;
+      background-color: #005af0;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .btn-1:hover {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: #005af0;
+      padding: 10px 20px;
+      border: none;
+      outline: 1px solid #010101;
+    }
+    
+  .btn-12 {
+      position: absolute;
+      bottom: 40px; /* Adjust the bottom spacing as needed */
+      right: 20px; /* Adjust the right spacing as needed */
+      text-decoration: none;
+      background-color: #005af0;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px 20px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form input {
+      margin: 10px 0;
+      width: 100%;
+      background-color: #e2e2e2;
+      border: none;
+      outline: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+    }
+
+    .form button {
+      margin-top: 20px;
+      text-decoration: none;
+      background-color: #005af0;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .form button:hover {
+      text-decoration: none;
+      background-color: #ffffff;
+      color: #005af0;
+      padding: 10px 20px;
+      border: none;
+      outline: 1px solid #010101;
+    }
+
+    .cards {
+      width: 950px;
+      height: 350px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .pain {
+      display: flex;
+      width: 1200px;
+      height: 200px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .cards_dis {
+      display: flex;
+      width: 1200px;
+      height: 600px;
+      border-radius: 8px;
+      margin: 30px;
+    }
+    .cards_dis img {
+      width: 700px;
+      height: 270px;
+      border: 5px solid black;
+      margin-left: 220px;
+      object-fit: cover;
+    }
+
+    .cards_dis .info {
+      padding: 20px;
+    }
+
+    .cards img {
+      width: 700px;
+      height: 50px;
+      margin-top: 60px;
+      margin-left: 10px;
+      border: 5px solid black;
+      object-fit: cover;
+    }
+
+    .pain img{
+      
+      width: 838px;
+      height: 50px;
+      margin-top: 60px;
+      margin-left: 10px;
+      border: 5px solid black;
+      object-fit: cover;
+    
+    }
+
+    .cards .info {
+      padding: 20px;
+    }
+
+    .pain .info {
+      padding: 20px;
+    }
+
+    .btn-12 {
+      position: absolute;
+      bottom: 40px; /* Adjust the bottom spacing as needed */
+      right: 20px; /* Adjust the right spacing as needed */
+      text-decoration: none;
+      background-color: #005af0;
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 10px 20px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+
+    .heading {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    .report-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .report-container p {
+        line-height: 1.6;
+    }
+    button[type="submit"],
+        #printButton {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .color-box {
+          display: flex;
+          align-items: center;
+           padding-bottom: 10px;
+        }
+    
+    
+        .box {
+          width: 30%; /* Full width of the line */
+          height: 30px; /* Height of the line */
+          background-color: #ccc; /* Default color for the line */
+    
+        }
+    
+        .label {
+          font-size: 14px;
+        }
+    
+        .red { background-color: red; }
+        .yellow { background-color: yellow; }
+        .green { background-color: green; }
+        .grey { background-color: grey; }
+
+        button[type="submit"]:hover,
+        #printButton:hover {
+            background-color: #0056b3;
+        }
+
+        button[type="submit"],
+        #addprintButton {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .content {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+        button[type="submit"]:hover,
+        #addprintButton:hover {
+            background-color: #0056b3;
+        }
+
+
+        button[type="submit"],
+        #updateprintButton {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button[type="submit"]:hover,
+        #updateprintButton:hover {
+            background-color: #0056b3;
+        }
+
+    @media print {
+      body {
+        background-color: #ffffff;
+      }
+
+      .report-container {
+        box-shadow: none;
+      }
+
+      .container,
+      .u-bon,
+      .btn-1 {
+        display: none;
+      }
+
+
+      .card,
+      .heading {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
+
+      .form,
+      .btn,
+      input {
+        display: none;
+      }
+
+      .cards img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .info {
+        padding: 10px;
+      }
+    }
+
+    #loadingOverlay {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      z-index: 9999;
+    }
+    
+    #loadingSpinner {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -25px;
+      margin-left: -25px;
+      animation: spin 1s linear infinite, fadeInOut 2s ease-in-out infinite;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: conic-gradient(from 0deg at 50% 50%, #3498db, #f3f3f3);
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    
+
+
+  </style>
+</head>
+
+<body>
+  <div id="loadingOverlay">
+    <div id="loadingSpinner"></div>
+  </div>
+ <div class="container">
+  <div class="card-container" style="padding-top: 30px">
+    <div class="card">
+    <div class="heading" style="font-size: 20px; padding-top:20px">Automation of drill core rock sample lithology logging</div>
+        <div style="font-size: 18px; padding-top:20px "><strong>Instruction :</strong></div>
+        <p>Upload a top view of a Core Tray Image as shown above in a good lighting condition.</p>
+        <div class="subhead" style="padding-bottom: 20px; font-size: 15px"><strong>Sample Input Image</strong></div>
+        <img src="{% static 'img.jpg' %}" style="width: 790px; height: 200px">
+      <form action="/predictComposition" method="post" class="form"  enctype="multipart/form-data">
+          {% csrf_token %}
+           <div class="drop_box">
+          <header>
+            <h4>Select Photo here</h4>
+          </header>
+          <p style="padding: 0; margin: 0">Files Supported: PNG, JPG, JPEG</p>
+               <p >( Maximum size of Image is 5 MB )</p>
+          <center><input type="file" id="image" name="filePath" accept="image/*" required>
+          {% comment %} <button class="btn">Choose File</button> {% endcomment %}</center>
+        </div>
+        <h4 style="font-size: 20px; color: #333;">Fill Information</h4>
+        <div class="input-group">
+          <input style="width: 750px" id="name" type="text" name="name" placeholder="Name" required>
+          <input style="width: 750px" id="city" type="text" name="location" placeholder="City" required>
+            <input style="width: 750px" id="phone" type="phone" name="no" placeholder="contact no" required>
+        </div>
+
+          <center><button class="btn">Submit</button></center>
+
+      </form>
+    </div>
+  </div>
+  </div>
+  <a class="btn-12" href="/dashboard" type="button">Go to Dashboard</a>
+
+  <!-- first image -->
+  {% if composition_with_path %}
+  <div class="u-bon" style="padding-top: 140px"></div>
+  <div class="heading">Lithology</div>
+  <div class="cards_dis">
+    <img src="{% static 'temp_images/output/bounding_box.jpg' %}" alt="Image">
+</div>
+
+  <!-- lithology image -->
+  <div class="u-bon" style="padding-top: 140px"></div>
+<div class="heading">Lithology</div>
+<section class="content">
+  <p>Lithology is the scientific study of rocks, focusing on their physical and chemical characteristics. Geologists analyze various aspects of rocks, including:</p>
+  <ul>
+      <li>Composition</li>
+      <li>Texture</li>
+      <li>Color</li>
+      <li>Other Properties</li>
+  </ul>
+  <p>This information helps geologists understand the Earth's history, geological processes, and identify natural resources.</p>
+</section>
+<br>
+<div style="display: flex; justify-content: space-between; padding-bottom: 30px;">
+
+  <div style="flex: 1; text-align: center; padding-right:20px">
+    <div style="width: 70px; height: 10px; background-color: #990F02; margin: 0 auto;"></div><br>
+    <span>Sandstone</span>
+  </div>
+
+  <div style="flex: 1; text-align: center; padding-right:20px">
+    <div style="width: 70px; height: 10px; background-color: #FFD700; margin: 0 auto;"></div><br>
+    <span>Shale</span>
+  </div>
+
+  <div style="flex: 1; text-align: center; padding-right:20px">
+    <div style="width: 70px; height: 10px; background-color: #008000; margin: 0 auto;"></div><br>
+    <span>Limestone</span>
+  </div>
+
+  <div style="flex: 1; text-align: center;">
+    <div style="width: 70px; height: 10px; background-color: #808080; margin: 0 auto;"></div><br>
+    <span>Unknown</span>
+  </div>
+
+</div>
+
+
+{% for image_info in composition_with_path %}
+    {% for image_path, percentages in image_info.items %}
+<div class="pain">
+    <img src="{% static image_path %}" alt="Image 1">
+    <div class="info">
+      <ul>
+        <li id="col1">Limestone Percentage: {{ percentages.limestone_percentage }}%</li>
+        <li id="col2">Sandstone Percentage: {{ percentages.sandstone_percentage }}%</li>
+        <li id="col3">Shale Percentage: {{ percentages.shale_percentage }}%</li>
+        {% comment %} <li id="col3">Granite Percentage: {{ percentages.granite_percentage }}%</li> {% endcomment %}
+        
+        <li id="col4">Unknown Percentage: {{ percentages.unknown_percentage }}%</li>
+    </ul>
+    </div>
+</div>
+{% endfor %}
+{% endfor %}
+
+<div class="heading" style="padding-top: 20px">Geological Discontinuity</div>
+<div class="cards_dis">
+    <img src="{% static discontinuities_image_path %}" alt="Image">
+    <!-- <div class="info">
+        <p><strong>Color:</strong><span id="col12">Pink</span> </p>
+        <p><strong>Person:</strong> <span id="col13">women</span></p>
+         <p><strong>Color:</strong><span id="col14">Pink</span> </p>
+        <p><strong>Person:</strong> <span id="col15">women</span></p>
+    </div> -->
+</div>
+
+
+</div>
+
+
+  <button class="btn-1" onclick="myFunction()">Generate Report</button>
+  <div id="previewContent" style="border: 5px solid black;">
+  <center><h2><strong>Report</strong></h2></center>
+        
+        <p>Name: {{name}}</p>
+        <p>Location: {{location}}</p>
+
+        <h3>Lithology</h3>
+        <p>From the drill core sample image, {{len}} have been identified. Each cylinder chemical composition is as below:
+        </p>
+        {% for image_info in composition_with_path %}
+        <h3>Cylinder {{ forloop.counter }}</h3>
+      {% for image_path, percentages in image_info.items %}
+      <div class="cards">
+          <img src="{% static image_path %}" alt="Image 1">
+          <div class="info">
+            <ul>
+              <li id="col1">Limestone Percentage: {{ percentages.limestone_percentage }}%</li>
+              <li id="col2">Sandstone Percentage: {{ percentages.sandstone_percentage }}%</li>
+              <li id="col3">Shale Percentage: {{ percentages.shale_percentage }}%</li>
+              <li id="col4">Unknown Percentage: {{ percentages.unknown_percentage }}%</li>
+          </ul>
+          </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+        <br>
+        <h3>Overall Percentages</h3>
+          <ul style="padding-left: 70px;">
+              <li id="col1" style="text-align: center;">Limestone Percentage: {{ compositions.limestone_percentage }}%</li>
+              <li id="col2"style="text-align: center;">Sandstone Percentage: {{ compositions.sandstone_percentage }}%</li>
+              <li id="col3"style="text-align: center;">Shale Percentage: {{ compositions.shale_percentage }}%</li>
+              <li id="col4"style="text-align: center;">Unknown Percentage: {{ compositions.unknown_percentage }}%</li>
+          </ul>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="heading" style="padding-top: 20px">Geological Discontinuity</div>
+        <div class="cards_dis">
+            <img src="{% static discontinuities_image_path %}" alt="Image">
+            <!-- <div class="info">
+                <p><strong>Color:</strong><span id="col12">Pink</span> </p>
+                <p><strong>Person:</strong> <span id="col13">women</span></p>
+                <p><strong>Color:</strong><span id="col14">Pink</span> </p>
+                <p><strong>Person:</strong> <span id="col15">women</span></p>
+            </div> -->
+        </div>
+        <p></p>
+      </div>
+      <button id="printButton" onclick="printDiv('previewContent')">Print</button>
+      {% endif %}
+      <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
+<script>
+  function myFunction() {
+    var x = document.getElementById("previewContent");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  </script>
+  <script>
+    document.querySelector("form").addEventListener("submit", function() {
+      // Show loading overlay when the form is submitted
+      document.getElementById("loadingOverlay").style.display = "block";
+    });
+    
+    // Add this to your existing script to hide the overlay when the page is loaded or the form submission is complete
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("loadingOverlay").style.display = "none";
+    });
+    
+    function printDiv(divName) {
+      var printContents = document.getElementById(divName).innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+    }
+    
+
+      const dropArea = document.querySelector(".drop_box"),
+  button = dropArea.querySelector("button"),
+  dragText = dropArea.querySelector("header"),
+  input = dropArea.querySelector("input");
+let file;
+var filename;
+
+button.onclick = () => {
+  input.click();
+};
+
+input.addEventListener("change", function (e) {
+  var fileName = e.target.files[0].name;
+  let filedata = `
+    <form action="" method="post">
+    <div class="form">
+    <h4>${fileName}</h4>
+    </div>
+    </form>`;
+  dropArea.innerHTML = filedata;
+});
+
+ function generateReport() {
+    // Get form values
+    var name = document.getElementById('name').value;
+    var city = document.getElementById('city').value;
+    var phone = document.getElementById('phone').value;
+
+    // Get additional parameters
+    var col1 = document.getElementById('col1').innerText;
+    var col2 = document.getElementById('col2').innerText;
+    var col3 = document.getElementById('col3').innerText;
+    var col4 = document.getElementById('col4').innerText;
+
+    var col12 = document.getElementById('col12').innerText;
+    var col13 = document.getElementById('col13').innerText;
+    var col14 = document.getElementById('col14').innerText;
+    var col15 = document.getElementById('col15').innerText;
+
+  // Open a new window
+    var newWindow = window.open('', '_blank');
+
+    // Add content to the new window
+    newWindow.document.write('<html><head><title>Generated Report</title></head><body>');
+
+    newWindow.document.write('<p><strong>Name:</strong> ' + name + '</p>');
+    newWindow.document.write('<p><strong>City:</strong> ' + city + '</p>');
+    newWindow.document.write('<p><strong>Contact No:</strong> ' + phone + '</p>');
+    newWindow.document.write('<h2>LITHOLOGY</h2>');
+    newWindow.document.write('<p><strong>Cylinder 1</strong> </p>');
+    newWindow.document.write('<p><strong>Color 1:</strong> ' + col1 + '</p>');
+    newWindow.document.write('<p><strong>Person 1:</strong> ' + col2 + '</p>');
+    newWindow.document.write('<p><strong>Color 2:</strong> ' + col3 + '</p>');
+    newWindow.document.write('<p><strong>Person 2:</strong> ' + col4 + '</p>');
+    newWindow.document.write('<h2>GEOLOGICAL DISCONTINUITY</h2>');
+     newWindow.document.write('<p><strong>Cylinder 1</strong></p>');
+    newWindow.document.write('<p><strong>Color 3:</strong> ' + col12 + '</p>');
+    newWindow.document.write('<p><strong>Person 3:</strong> ' + col13 + '</p>');
+    newWindow.document.write('<p><strong>Color 4:</strong> ' + col14 + '</p>');
+    newWindow.document.write('<p><strong>Person 4:</strong> ' + col15 + '</p>');
+    newWindow.document.write('</body></html>');
+
+    // Close the document stream to finish writing the document
+    newWindow.document.close();
+
+      newWindow.print();
+  }
+
+
+  </script>
+</body>
+
+</html>
